@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management System</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        /* MAIN CONTAINER */
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 230px;
+            min-height: 100vh;
+
+            background: linear-gradient(
+                180deg,
+                #0645d8,
+                #08a6d9
+            );
+
+            color: white;
+
+            padding: 25px 15px;
+        }
+
+
+        .logo {
+            font-size: 19px;
+            font-weight: bold;
+
+            margin-bottom: 40px;
+
+            padding-left: 10px;
+        }
+
+
+        .menu button {
+
+            width: 100%;
+
+            padding: 15px;
+
+            margin-bottom: 10px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: transparent;
+
+            color: white;
+
+            text-align: left;
+
+            font-size: 15px;
+
+            cursor: pointer;
+        }
+
+
+        .menu button:hover,
+        .menu button.active {
+
+            background: rgba(255,255,255,0.18);
+        }
+
+
+        /* MAIN AREA */
+
+        .main {
+
+            flex: 1;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        /* TOP BAR */
+
+        .topbar {
+
+            height: 65px;
+
+            background: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 30px;
+
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        .topbar h2 {
+
+            color: #123b91;
+        }
+
+
+        /* ALL PAGES */
+
+        .page {
+
+            display: none;
+
+            width: 100%;
+
+            min-height: calc(100vh - 65px);
+        }
+
+
+        .page.active {
+
+            display: flex;
+        }
+
+
+        /* =========================
+           DASHBOARD
+        ========================= */
+
+        #dashboard {
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            background: linear-gradient(
+                135deg,
+                #eef6ff,
+                #ffffff,
+                #eefaff
+            );
+        }
+
+
+        .welcome {
+
+            max-width: 850px;
+
+            padding: 40px;
+        }
+
+
+        .welcome-icon {
+
+            font-size: 90px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .welcome h1 {
+
+            font-size: 45px;
+
+            color: #123b91;
+
+            margin-bottom: 20px;
+        }
+
+
+        .welcome-line {
+
+            width: 100px;
+
+            height: 5px;
+
+            background: #0878e8;
+
+            border-radius: 10px;
+
+            margin: 20px auto;
+        }
+
+
+        .welcome p {
+
+            font-size: 19px;
+
+            color: #64748b;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           ADD STUDENT
+        ========================= */
+
+        #add {
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #f4f7fb;
+        }
+
+
+        .form-card {
+
+            width: 650px;
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 10px 35px rgba(0,0,0,0.1);
+        }
+
+
+        .form-card h1 {
+
+            text-align: center;
+
+            color: #123b91;
+
+            margin-bottom: 10px;
+        }
+
+
+        .form-card p {
+
+            text-align: center;
+
+            color: #64748b;
+
+            margin-bottom: 30px;
+        }
+
+
+        .form-group {
+
+            margin-bottom: 18px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+        }
+
+
+        .form-group input {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #d5dce5;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+        }
+
+
+        .add-button {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #0878e8;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .add-button:hover {
+
+            background: #075fc0;
+        }
+
+
+        /* =========================
+           VIEW STUDENTS
+        ========================= */
+
+        #students {
+
+            display: none;
+
+            padding: 35px;
+
+            background: #f4f7fb;
+        }
+
+
+        #students.active {
+
+            display: block;
+        }
+
+
+        #students h1 {
+
+            color: #123b91;
+
+            margin-bottom: 25px;
+        }
+
+
+        .table-container {
+
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.08);
+
+            overflow-x: auto;
+        }
+
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+        }
+
+
+        th,
+        td {
+
+            padding: 15px;
+
+            text-align: left;
+
+            border-bottom: 1px solid #eee;
+        }
+
+
+        th {
+
+            background: #f5f8fc;
+
+            color: #475569;
+        }
+
+
+        .edit-button {
+
+            background: #f59e0b;
+
+            color: white;
+
+            border: none;
+
+            padding: 8px 12px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            margin-right: 5px;
+        }
+
+
+        .delete-button {
+
+            background: #ef4444;
+
+            color: white;
+
+            border: none;
+
+            padding: 8px 12px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+        }
+
+
+        /* MOBILE */
+
+        @media(max-width:700px) {
+
+            .sidebar {
+
+                width: 190px;
+            }
+
+            .welcome h1 {
+
+                font-size: 32px;
+            }
+
+            .welcome-icon {
+
+                font-size: 65px;
+            }
+
+            .form-card {
+
+                width: 90%;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            🎓 Student Management System
+
+        </div>
+
+
+        <div class="menu">
+
+
+            <button
+                id="dashboardButton"
+                class="active"
+                onclick="showPage('dashboard')">
+
+                🏠 Dashboard
+
+            </button>
+
+
+            <button
+                id="addButton"
+                onclick="showPage('add')">
+
+                ➕ Add Student
+
+            </button>
+
+
+            <button
+                id="viewButton"
+                onclick="showPage('students')">
+
+                👥 View Students
+
+            </button>
+
+
+            <button onclick="logout()">
+
+                🚪 Logout
+
+            </button>
+
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <div class="main">
+
+
+        <!-- TOP BAR -->
+
+        <div class="topbar">
+
+            <h2 id="pageTitle">
+                Dashboard
+            </h2>
+
+
+            <span>
+                👤 Hello, Admin ▼
+            </span>
+
+        </div>
+
+
+
+        <!-- =========================
+             DASHBOARD
+        ========================== -->
+
+        <section
+            id="dashboard"
+            class="page active">
+
+            <div class="welcome">
+
+                <div class="welcome-icon">
+                    🎓
+                </div>
+
+
+                <h1>
+                    Welcome to Student Management System!
+                </h1>
+
+
+                <div class="welcome-line"></div>
+
+
+                <p>
+                    Manage student details easily and efficiently.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ADD STUDENT
+        ========================== -->
+
+        <section
+            id="add"
+            class="page">
+
+
+            <div class="form-card">
+
+                <h1>
+                    Add New Student
+                </h1>
+
+
+                <p>
+                    Enter the student details below
+                </p>
+
+
+                <form id="studentForm">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Student Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter student name"
+                            required>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            USN
+                        </label>
+
+                        <input
+                            type="text"
+                            id="usn"
+                            placeholder="Enter USN"
+                            required>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Department
+                        </label>
+
+                        <input
+                            type="text"
+                            id="department"
+                            placeholder="Enter department"
+                            required>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Semester
+                        </label>
+
+                        <input
+                            type="number"
+                            id="semester"
+                            placeholder="Enter semester"
+                            required>
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="add-button">
+
+                        ➕ Add Student
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             VIEW STUDENTS
+        ========================== -->
+
+        <section
+            id="students"
+            class="page">
+
+
+            <h1>
+                View Students
+            </h1>
+
+
+            <div class="table-container">
+
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Name</th>
+
+                            <th>USN</th>
+
+                            <th>Department</th>
+
+                            <th>Semester</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentTableBody">
+
+                    </tbody>
+
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+    /* =========================
+       PAGE SWITCHING
+    ========================== */
+
+    function showPage(page) {
+
+
+        // Hide dashboard
+        document.getElementById("dashboard")
+            .classList.remove("active");
+
+
+        // Hide add student
+        document.getElementById("add")
+            .classList.remove("active");
+
+
+        // Hide students
+        document.getElementById("students")
+            .classList.remove("active");
+
+
+        // Remove active menu
+        document.getElementById("dashboardButton")
+            .classList.remove("active");
+
+        document.getElementById("addButton")
+            .classList.remove("active");
+
+        document.getElementById("viewButton")
+            .classList.remove("active");
+
+
+
+        /* DASHBOARD */
+
+        if (page === "dashboard") {
+
+            document.getElementById("dashboard")
+                .classList.add("active");
+
+            document.getElementById("dashboardButton")
+                .classList.add("active");
+
+            document.getElementById("pageTitle")
+                .textContent = "Dashboard";
+
+        }
+
+
+
+        /* ADD STUDENT */
+
+        else if (page === "add") {
+
+            document.getElementById("add")
+                .classList.add("active");
+
+            document.getElementById("addButton")
+                .classList.add("active");
+
+            document.getElementById("pageTitle")
+                .textContent = "Add Student";
+
+        }
+
+
+
+        /* VIEW STUDENTS */
+
+        else if (page === "students") {
+
+            document.getElementById("students")
+                .classList.add("active");
+
+            document.getElementById("viewButton")
+                .classList.add("active");
+
+            document.getElementById("pageTitle")
+                .textContent = "View Students";
+
+            loadStudents();
+
+        }
+
+    }
+
+
+
+    /* =========================
+       ADD STUDENT
+    ========================== */
+
+    document
+        .getElementById("studentForm")
+        .addEventListener("submit", async function(event) {
+
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById("name").value.trim();
+
+
+            const usn =
+                document.getElementById("usn").value.trim();
+
+
+            const department =
+                document.getElementById("department").value.trim();
+
+
+            const semester =
+                Number(
+                    document.getElementById("semester").value
+                );
+
+
+
+            try {
+
+
+                const response =
+                    await fetch("/api/students", {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            name: name,
+
+                            usn: usn,
+
+                            department: department,
+
+                            semester: semester
+
+                        })
+
+                    });
+
+
+
+                const data =
+                    await response.json();
+
+
+
+                if (!response.ok) {
+
+                    alert(data.error);
+
+                    return;
+
+                }
+
+
+
+                alert(data.message);
+
+
+                document
+                    .getElementById("studentForm")
+                    .reset();
+
+
+                showPage("students");
+
+
+            }
+
+            catch(error) {
+
+                console.log(error);
+
+                alert("Server connection error.");
+
+            }
+
+        });
+
+
+
+    /* =========================
+       LOAD STUDENTS
+    ========================== */
+
+    async function loadStudents() {
+
+
+        const response =
+            await fetch("/api/students");
+
+
+        const students =
+            await response.json();
+
+
+        const tableBody =
+            document.getElementById(
+                "studentTableBody"
+            );
+
+
+        tableBody.innerHTML = "";
+
+
+
+        students.forEach(function(student) {
+
+
+            const row =
+                document.createElement("tr");
+
+
+            row.innerHTML = `
+
+                <td>${student.id}</td>
+
+                <td>${student.name}</td>
+
+                <td>${student.usn}</td>
+
+                <td>${student.department}</td>
+
+                <td>${student.semester}</td>
+
+                <td>
+
+                    <button
+                        class="edit-button"
+                        onclick="editStudent(
+                            ${student.id},
+                            '${student.name}',
+                            '${student.usn}',
+                            '${student.department}',
+                            ${student.semester}
+                        )">
+
+                        Edit
+
+                    </button>
+
+
+                    <button
+                        class="delete-button"
+                        onclick="deleteStudent(${student.id})">
+
+                        Delete
+
+                    </button>
+
+                </td>
+
+            `;
+
+
+            tableBody.appendChild(row);
+
+        });
+
+    }
+
+
+
+    /* =========================
+       DELETE
+    ========================== */
+
+    async function deleteStudent(id) {
+
+
+        if (!confirm(
+            "Are you sure you want to delete this student?"
+        )) {
+
+            return;
+
+        }
+
+
+        const response =
+            await fetch(
+                `/api/students/${id}`,
+                {
+                    method: "DELETE"
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        alert(data.message);
+
+
+        loadStudents();
+
+    }
+
+
+
+    /* =========================
+       EDIT
+    ========================== */
+
+    async function editStudent(
+        id,
+        oldName,
+        oldUsn,
+        oldDepartment,
+        oldSemester
+    ) {
+
+
+        const name =
+            prompt("Student Name:", oldName);
+
+
+        if (name === null) return;
+
+
+        const usn =
+            prompt("USN:", oldUsn);
+
+
+        if (usn === null) return;
+
+
+        const department =
+            prompt(
+                "Department:",
+                oldDepartment
+            );
+
+
+        if (department === null) return;
+
+
+        const semester =
+            prompt(
+                "Semester:",
+                oldSemester
+            );
+
+
+        if (semester === null) return;
+
+
+
+        const response =
+            await fetch(
+                `/api/students/${id}`,
+                {
+
+                    method: "PUT",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        name: name,
+
+                        usn: usn,
+
+                        department: department,
+
+                        semester: Number(semester)
+
+                    })
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        alert(data.message);
+
+
+        loadStudents();
+
+    }
+
+
+
+    /* =========================
+       LOGOUT
+    ========================== */
+
+    function logout() {
+
+        showPage("dashboard");
+
+    }
+
+
+
+    /* =========================
+       INITIAL LOAD
+    ========================== */
+
+    loadStudents();
+
+</script>
+
+
+</body>
+
+</html>

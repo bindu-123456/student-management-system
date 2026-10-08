@@ -1,0 +1,579 @@
+/* =========================
+   PROFESSIONAL ADD STUDENT
+========================= */
+
+#add {
+    display: none;
+
+    padding: 35px 45px;
+
+    background: #f5f7fb;
+}
+
+#add.active {
+    display: block;
+}
+
+
+/* Page heading */
+
+.add-header {
+    margin-bottom: 25px;
+}
+
+.add-header h1 {
+    color: #123b91;
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.add-header p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+
+/* Main form area */
+
+.student-form-container {
+    width: 100%;
+
+    background: white;
+
+    border-radius: 16px;
+
+    border: 1px solid #e5eaf1;
+
+    box-shadow: 0 10px 30px rgba(15, 50, 100, 0.07);
+
+    overflow: hidden;
+}
+
+
+/* Form top */
+
+.form-top {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 25px 30px;
+
+    border-bottom: 1px solid #edf0f5;
+
+    background: #fbfcfe;
+}
+
+
+.student-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #e8f2ff;
+
+    font-size: 28px;
+}
+
+
+.form-top h2 {
+    color: #1e3a8a;
+
+    font-size: 19px;
+
+    margin-bottom: 4px;
+}
+
+
+.form-top p {
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* Form */
+
+#studentForm {
+    padding: 30px;
+}
+
+
+/* Two columns */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+
+.form-group label {
+    display: block;
+
+    color: #334155;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 9px;
+}
+
+
+.form-group input {
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 15px;
+
+    border: 1px solid #d8e0eb;
+
+    border-radius: 8px;
+
+    background: white;
+
+    color: #1e293b;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+.form-group input:hover {
+    border-color: #b8c5d6;
+}
+
+
+.form-group input:focus {
+    border-color: #0878e8;
+
+    box-shadow:
+        0 0 0 3px rgba(8, 120, 232, 0.09);
+}
+
+
+.form-group input::placeholder {
+    color: #9aa7b7;
+}
+
+
+/* Bottom area */
+
+.form-bottom {
+    margin-top: 30px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #edf0f5;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+}
+
+
+/* Reset button */
+
+.reset-button {
+    padding: 12px 22px;
+
+    border: 1px solid #d5dce6;
+
+    border-radius: 8px;
+
+    background: white;
+
+    color: #475569;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.reset-button:hover {
+    background: #f8fafc;
+}
+
+
+/* Add button */
+
+.add-button {
+    width: auto;
+
+    min-width: 150px;
+
+    padding: 12px 24px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: linear-gradient(
+        90deg,
+        #0878e8,
+        #075bd0
+    );
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 14px rgba(8, 120, 232, 0.18);
+
+    transition: 0.2s;
+}
+
+
+.add-button:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 18px rgba(8, 120, 232, 0.25);
+}
+
+
+/* Responsive */
+
+@media (max-width: 800px) {
+
+    #add {
+        padding: 25px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-bottom {
+        justify-content: stretch;
+    }
+
+    .add-button,
+    .reset-button {
+        flex: 1;
+    }
+}
+/* =================================
+   PROFESSIONAL ADD STUDENT PAGE
+================================= */
+
+#add {
+    display: none;
+    padding: 35px 45px;
+    background: #f5f7fb;
+}
+
+#add.active {
+    display: block;
+}
+
+
+/* Page heading */
+
+.add-student-wrapper {
+    width: 100%;
+}
+
+.add-student-header {
+    margin-bottom: 25px;
+}
+
+.add-student-header h1 {
+    font-size: 28px;
+    color: #123b91;
+    margin-bottom: 6px;
+}
+
+.add-student-header p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+
+/* Main card */
+
+.student-form-card {
+    width: 100%;
+
+    background: white;
+
+    border: 1px solid #e4e9f0;
+
+    border-radius: 16px;
+
+    box-shadow: 0 10px 30px rgba(15, 50, 100, 0.08);
+
+    overflow: hidden;
+}
+
+
+/* Header inside card */
+
+.student-form-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 25px 30px;
+
+    background: #f9fbfd;
+
+    border-bottom: 1px solid #e8edf3;
+}
+
+
+.student-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #e8f2ff;
+
+    border-radius: 12px;
+
+    font-size: 30px;
+}
+
+
+.student-form-header h2 {
+    color: #1e3a8a;
+
+    font-size: 20px;
+
+    margin-bottom: 5px;
+}
+
+
+.student-form-header p {
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* Form */
+
+#studentForm {
+    padding: 32px;
+}
+
+
+/* Two column layout */
+
+.student-form-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px 30px;
+}
+
+
+/* Input */
+
+.input-group label {
+    display: block;
+
+    color: #334155;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 9px;
+}
+
+
+.input-group input {
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 15px;
+
+    border: 1px solid #d7e0eb;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    font-size: 14px;
+
+    color: #1e293b;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+.input-group input:hover {
+    border-color: #b8c5d5;
+}
+
+
+.input-group input:focus {
+    border-color: #0878e8;
+
+    box-shadow:
+        0 0 0 3px rgba(8, 120, 232, 0.10);
+}
+
+
+.input-group input::placeholder {
+    color: #9aa7b7;
+}
+
+
+/* Bottom buttons */
+
+.student-form-footer {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    margin-top: 32px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #edf0f4;
+}
+
+
+/* Clear */
+
+.clear-button {
+    padding: 12px 24px;
+
+    background: white;
+
+    color: #475569;
+
+    border: 1px solid #d5dce6;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.clear-button:hover {
+    background: #f8fafc;
+}
+
+
+/* Add Student */
+
+.save-student-button {
+    padding: 12px 28px;
+
+    background: linear-gradient(
+        90deg,
+        #0878e8,
+        #075bd0
+    );
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px rgba(8, 120, 232, 0.20);
+
+    transition: 0.2s;
+}
+
+
+.save-student-button:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 20px rgba(8, 120, 232, 0.25);
+}
+
+
+/* Responsive */
+
+@media (max-width: 800px) {
+
+    #add {
+        padding: 25px;
+    }
+
+    .student-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .student-form-header {
+        padding: 20px;
+    }
+
+    #studentForm {
+        padding: 20px;
+    }
+
+    .student-form-footer {
+        flex-direction: column;
+    }
+
+    .clear-button,
+    .save-student-button {
+        width: 100%;
+    }
+
+}
