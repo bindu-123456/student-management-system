@@ -149,6 +149,79 @@
 
 
         /* =========================
+           LOGOUT POPUP
+        ========================= */
+
+        .logout-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 90px;
+            z-index: 999;
+        }
+
+        .logout-modal.hidden {
+            display: none;
+        }
+
+        .logout-card {
+            width: 420px;
+            background: rgba(27, 38, 46, 0.92);
+            color: white;
+            border-radius: 18px;
+            padding: 18px 22px 18px 22px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+        }
+
+        .logout-card .logout-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .logout-card .logout-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        .logout-card .logout-text {
+            font-size: 20px;
+            line-height: 1.5;
+            color: #f8fafc;
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
+
+        .logout-card .logout-button {
+            display: block;
+            margin-left: auto;
+            margin-top: 8px;
+            border: none;
+            border-radius: 12px;
+            background: #f1f5f9;
+            color: #1f2937;
+            font-size: 18px;
+            padding: 10px 28px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .logout-card .logout-button:hover {
+            background: #dfe7f3;
+        }
+
+
+        /* =========================
            DASHBOARD
         ========================= */
 
@@ -463,6 +536,17 @@
 <body>
 
 
+<div id="logoutModal" class="logout-modal hidden" aria-live="polite">
+    <div class="logout-card">
+        <div class="logout-top">
+            <div class="logout-label"><span>⏱</span> <span id="logoutTime">127.0.0.1:5000 says</span></div>
+            <div style="font-size: 22px;">👤</div>
+        </div>
+        <div class="logout-text">Logout successful</div>
+        <button class="logout-button" onclick="closeLogoutModal()">OK</button>
+    </div>
+</div>
+
 <div class="container">
 
 
@@ -736,6 +820,44 @@
             </div>
 
         </section>
+
+
+        <!-- =========================
+             LOGOUT MODAL
+        ========================== -->
+
+        <div class="logout-modal hidden" id="logoutModal">
+
+
+            <div class="logout-card">
+
+
+                <div class="logout-top">
+
+                    <div class="logout-label">
+                        Logout
+                    </div>
+
+                </div>
+
+
+                <div class="logout-text">
+                    Are you sure you want to logout?
+                </div>
+
+
+                <button
+                    class="logout-button"
+                    onclick="confirmLogout()">
+
+                    Yes, Logout
+
+                </button>
+
+
+            </div>
+
+        </div>
 
 
     </div>
@@ -1150,10 +1272,20 @@
 
     function logout() {
 
-        showPage("dashboard");
+        document.getElementById("logoutModal")
+            .classList.remove("hidden");
 
     }
 
+
+    function closeLogoutModal() {
+
+        document.getElementById("logoutModal")
+            .classList.add("hidden");
+
+        showPage("dashboard");
+
+    }
 
 
     /* =========================
